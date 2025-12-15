@@ -99,3 +99,84 @@ class Item(models.Model):
 
         if errors:
             raise ValidationError(errors)
+
+
+
+
+class ItemComponent(models.Model):
+    parent_item = models.ForeignKey\
+    (
+        "Item",
+        on_delete=models.PROTECT,
+        related_name="components_as_parent",
+        null=False,
+        blank=False,
+    )
+
+    child_item = models.ForeignKey\
+    (
+        "Item",
+        on_delete=models.PROTECT,
+        related_name="components_as_child",
+        null=False,
+        blank=False,
+    )
+
+    # validators を付けて「1 以上」を定義側でも明確化
+    child_units_per_parent_unit = models.PositiveIntegerField\
+    (
+        validators=[MinValueValidator(1)]
+    )
+
+
+
+    class Meta:
+        # (parent_item, child_item) の一意制約
+        constraints =\
+        [
+            models.UniqueConstraint
+            (
+                fields=["parent_item", "child_item"],
+
+                name="uniq_itemcomponent_parent_child",
+            )
+        ]
+
+
+
+    def __str__(self) -> str:
+        return f"{self.parent_item} -> {self.child_item} x {self.child_units_per_parent_unit}"
+
+
+
+    def clean(self):
+        super().clean()
+
+        errors = {}
+
+
+
+        if self.parent_item_id is None:
+            errors["parent_item"] = "parent_item を空白にはできません。"
+
+        if self.child_item_id is None:
+            errors["child_item"] = "child_item を空白にはできません。"
+
+        if\
+        (
+            self.child_units_per_parent_unit is None
+            or
+            self.child_units_per_parent_unit <= 0
+        ):
+            errors["child_units_per_parent_unit"] = ("child_units_per_parent_unit は 1 以上を指定してください。")
+
+
+
+        if self.parent_item_id is not None and self.child_item_id is not None:
+            if self.parent_item_id == self.child_item_id:
+                errors["child_item"] = "parent_item と child_item を同一にはできません。"
+
+
+
+        if errors:
+            raise ValidationError(errors)
