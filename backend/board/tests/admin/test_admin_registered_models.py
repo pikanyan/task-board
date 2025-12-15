@@ -15,6 +15,7 @@ from board import models
         models.Item,
         models.ItemComponent,
         models.Order,
+        models.Task,
     ],
 )
 def test_admin_registers_board_models(model):
