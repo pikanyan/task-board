@@ -27,3 +27,19 @@ class DepartmentAdmin(admin.ModelAdmin):
 
     #  編集画面の項目順を固定
     fields = ("name", "uses_lot", "lot_g")
+
+
+
+
+@admin.register(models.Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display =\
+    (
+        "id",
+        "name",
+        "weight_per_unit_g",
+        "default_department",
+        "is_department_output",
+    )
+
+    list_display_links = ("name",)
