@@ -7,13 +7,13 @@
     <head>
         <meta charset="utf-8" />
 
-        <title>Department 作成</title>
+        <title>Department {% if object %}更新{% else %}作成{% endif %}</title>
     </head>
 
 
 
     <body>
-        <h1>Department 作成</h1>
+        <h1>Department {% if object %}更新{% else %}作成{% endif %}</h1>
 
 
 
@@ -24,7 +24,7 @@
             
             {{ form.as_p }}
 
-            <button type="submit">作成</button>
+            <button type="submit">{% if object %}更新{% else %}作成{% endif %}</button>
         </form>
     </body>
 </html>
