@@ -6,6 +6,8 @@ from board import views
 
 urlpatterns =\
 [
-    # 追加
     path("departments/", views.DepartmentListView.as_view(), name="department_list"),
+
+    # 追加
+    path("departments/<int:pk>/", views.DepartmentDetailView.as_view(), name="department_detail"),
 ]
