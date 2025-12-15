@@ -13,11 +13,13 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="m-0">班一覧</h1>
 
-        <!--追加-->
+
+        
         <a class="btn btn-primary" href="{% url 'department_create' %}">班を追加</a>
     </div>
 
 
 
-    {% render_table table %}
+    {# bootstrap5 テンプレートを指定 #}
+    {% render_table table "django_tables2/bootstrap5.html" %}
 {% endblock %}
