@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <h1>Department 削除</h1>
+    <h1>班を削除</h1>
 
     <p>削除対象: {{ object.name }}</p>
 
@@ -27,7 +27,5 @@
 
 
 
-    <p>
-        <a href="{% url 'department_detail' object.pk %}">戻る</a>
-    </p>
+    <a class="btn btn-outline-secondary" href="{% url 'department_detail' object.pk %}">詳細に戻る</a>
 {% endblock %}

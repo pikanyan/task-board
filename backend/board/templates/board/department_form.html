@@ -15,6 +15,19 @@
 
 
 
-        <button type="submit">{% if object %}更新{% else %}作成{% endif %}</button>
+        <button type="submit" class="btn btn-primary">
+            {% if object %}更新{% else %}作成{% endif %}
+        </button>
+
+
+
+        {% if object %}
+            <a class="btn btn-outline-secondary" href="{% url 'department_detail' object.pk %}">詳細に戻る</a>
+            <a class="btn btn-danger" href="{% url 'department_delete' object.pk %}">削除</a>
+
+        {% else %}
+            <a class="btn btn-outline-secondary" href="{% url 'department_list' %}">一覧に戻る</a>
+
+        {% endif %}
     </form>
 {% endblock %}
