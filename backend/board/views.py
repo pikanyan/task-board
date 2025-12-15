@@ -2,7 +2,9 @@
 from django.urls import reverse, reverse_lazy
 
 from django_tables2 import SingleTableView
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+
+from django.db.models.deletion import ProtectedError
 
 from board import models, tables
 
@@ -48,7 +50,6 @@ class DepartmentCreateView(CreateView):
 
 
 
-# 追加
 # Department 更新 (U)
 class DepartmentUpdateView(UpdateView):
     model = models.Department
@@ -62,3 +63,25 @@ class DepartmentUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse("department_detail", kwargs={"pk": self.object.pk})
+
+
+
+# Department 削除 (D)
+class DepartmentDeleteView(DeleteView):
+    model = models.Department
+
+    template_name = "board/department_confirm_delete.html"
+
+    success_url = reverse_lazy("department_list")
+
+
+
+    def form_valid(self, form):
+        # 参照されていて消せない場合をガード
+        try:
+            return super().form_valid(form)
+        
+        except ProtectedError:
+            form.add_error(None, "この Department は参照されているため削除できません。")
+
+            return self.form_invalid(form)
