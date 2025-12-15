@@ -6,7 +6,7 @@
 {% block content %}
     <h1>班を削除</h1>
 
-    <p>削除対象: {{ object.name }}</p>
+    <p class="mb-3">削除対象: <strong>{{ object.name }}</strong></p>
 
 
 
@@ -20,12 +20,11 @@
 
 
 
-    <form method="post">
+    <form method="post" class="d-flex gap-2">
         {% csrf_token %}
-        <button type="submit">削除</button>
+
+        <button type="submit" class="btn btn-danger">削除する</button>
+        
+        <a class="btn btn-outline-secondary" href="{% url 'department_detail' object.pk %}">詳細に戻る</a>
     </form>
-
-
-
-    <a class="btn btn-outline-secondary" href="{% url 'department_detail' object.pk %}">詳細に戻る</a>
 {% endblock %}

@@ -15,19 +15,21 @@
 
 
 
-        <button type="submit" class="btn btn-primary">
-            {% if object %}更新{% else %}作成{% endif %}
-        </button>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                {% if object %}更新{% else %}作成{% endif %}
+            </button>
 
 
 
-        {% if object %}
-            <a class="btn btn-outline-secondary" href="{% url 'department_detail' object.pk %}">詳細に戻る</a>
-            <a class="btn btn-danger" href="{% url 'department_delete' object.pk %}">削除</a>
+            {% if object %}
+                <a class="btn btn-outline-secondary" href="{% url 'department_detail' object.pk %}">詳細に戻る</a>
+                <a class="btn btn-outline-danger" href="{% url 'department_delete' object.pk %}">削除</a>
 
-        {% else %}
-            <a class="btn btn-outline-secondary" href="{% url 'department_list' %}">一覧に戻る</a>
-
-        {% endif %}
+            {% else %}
+                <a class="btn btn-outline-secondary" href="{% url 'department_list' %}">一覧に戻る</a>
+                
+            {% endif %}
+        </div>
     </form>
 {% endblock %}

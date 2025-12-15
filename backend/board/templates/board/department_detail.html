@@ -3,27 +3,30 @@
 
 
 
+{% block title %}班詳細{% endblock %}
+
+
+
 {% block content %}
-    <h1>{{ department.name }}</h1>
+    <div class="d-flex justify-content-between align-items-start mb-3">
+        <h1 class="m-0">{{ department.name }}</h1>
 
 
-
-
-    <!--追加-->
-    <!--リンク-->
-    <div class="d-flex gap-2">
-        <a class="btn btn-outline-secondary" href="{% url 'department_list' %}">一覧に戻る</a>
-        <a class="btn btn-outline-primary" href="{% url 'department_update' department.pk %}">編集</a>
-        <a class="btn btn-outline-danger" href="{% url 'department_delete' department.pk %}">削除</a>
+        
+        <div class="d-flex gap-2">
+            <a class="btn btn-outline-secondary" href="{% url 'department_list' %}">一覧に戻る</a>
+            <a class="btn btn-outline-primary" href="{% url 'department_update' department.pk %}">編集</a>
+            <a class="btn btn-outline-danger" href="{% url 'department_delete' department.pk %}">削除</a>
+        </div>
     </div>
 
 
 
-    <dl>
-        <dt>uses_lot</dt>
-        <dd>{{ department.uses_lot }}</dd>
+    <dl class="row">
+        <dt class="col-sm-3">uses_lot</dt>
+        <dd class="col-sm-9">{{ department.uses_lot }}</dd>
 
-        <dt>lot_g</dt>
-        <dd>{{ department.lot_g }}</dd>
+        <dt class="col-sm-3">lot_g</dt>
+        <dd class="col-sm-9">{{ department.lot_g }}</dd>
     </dl>
 {% endblock %}
