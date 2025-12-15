@@ -1,43 +1,33 @@
 <!--backend/board/templates/board/department_confirm_delete.html-->
-<!DOCTYPE html>
+{% extends "base.html" %}
 
 
 
-<html lang="ja">
-    <head>
-        <meta charset="utf-8" />
-        <title>Department 削除</title>
-    </head>
+{% block content %}
+    <h1>Department 削除</h1>
+
+    <p>削除対象: {{ object.name }}</p>
 
 
 
-    <body>
-        <h1>Department 削除</h1>
-
-        <p>削除対象: {{ object.name }}</p>
-
-
-
-        {% if form.non_field_errors %}
-            <ul>
-                {% for err in form.non_field_errors %}
-                    <li>{{ err }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    {% if form.non_field_errors %}
+        <ul>
+            {% for err in form.non_field_errors %}
+                <li>{{ err }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 
 
-        <form method="post">
-            {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">削除</button>
+    </form>
 
-            <button type="submit">削除</button>
-        </form>
 
 
-        
-        <p>
-            <a href="{% url 'department_detail' object.pk %}">戻る</a>
-        </p>
-    </body>
-</html>
+    <p>
+        <a href="{% url 'department_detail' object.pk %}">戻る</a>
+    </p>
+{% endblock %}
