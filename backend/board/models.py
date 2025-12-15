@@ -122,7 +122,7 @@ class ItemComponent(models.Model):
         blank=False,
     )
 
-    # validators を付けて「1 以上」を定義側でも明確化
+    # 1 以上 を定義側でも明確化
     child_units_per_parent_unit = models.PositiveIntegerField\
     (
         validators=[MinValueValidator(1)]
@@ -175,6 +175,59 @@ class ItemComponent(models.Model):
         if self.parent_item_id is not None and self.child_item_id is not None:
             if self.parent_item_id == self.child_item_id:
                 errors["child_item"] = "parent_item と child_item を同一にはできません。"
+
+
+
+        if errors:
+            raise ValidationError(errors)
+
+
+
+
+class Order(models.Model):
+    product_item = models.ForeignKey\
+    (
+        Item,
+        on_delete=models.PROTECT,
+        null=False,
+        blank=False,
+    )
+
+    # 1 以上 を定義側でも明確化
+    quantity_units = models.PositiveIntegerField\
+    (
+        validators=[MinValueValidator(1)]
+    )
+
+    due_at = models.DateTimeField()
+
+    customer_name = models.CharField(max_length=200)
+
+
+
+    def __str__(self) -> str:
+        return f"{self.product_item} x {self.quantity_units} @ {self.due_at} ({self.customer_name})"
+
+
+
+    def clean(self):
+        super().clean()
+
+        errors = {}
+
+
+
+        if self.product_item_id is None:
+            errors["product_item"] = "product_item を空白にはできません。"
+
+        if self.quantity_units is None or self.quantity_units <= 0:
+            errors["quantity_units"] = "quantity_units は 1 以上を指定してください。"
+
+        if self.due_at is None:
+            errors["due_at"] = "due_at を空白にはできません。"
+
+        if self.customer_name is None or self.customer_name.strip() == "":
+            errors["customer_name"] = "customer_name を空白にはできません。"
 
 
 
