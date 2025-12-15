@@ -1,8 +1,16 @@
-<!-- backend/board/templates/board/department_list.html -->
+<!--backend/board/templates/board/department_list.html-->
+{% extends "base.html" %}
+
 {% load django_tables2 %}
 
+{% block title%}Departments{% endblock %}
 
 
-<h1>Departments</h1>
 
-{% render_table table %}
+{% block content %}
+    <h1>Departments</h1>
+
+
+
+    {% render_table table %}
+{% endblock %}
