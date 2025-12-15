@@ -58,3 +58,17 @@ class ItemComponentAdmin(admin.ModelAdmin):
 
     list_display_links = ("parent_item",)
 
+
+
+@admin.register(models.Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display =\
+    (
+        "id",
+        "product_item",
+        "quantity_units",
+        "due_at",
+        "customer_name",
+    )
+
+    list_display_links = ("product_item",)
