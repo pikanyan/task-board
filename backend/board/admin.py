@@ -72,3 +72,18 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
     list_display_links = ("product_item",)
+
+
+
+@admin.register(models.Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display =\
+    (
+        "id",
+        "department",
+        "item",
+        "quantity_units",
+        "due_at",
+    )
+
+    list_display_links = ("item",)
