@@ -1,6 +1,8 @@
 # backend/board/views.py
 from django_tables2 import SingleTableView
-from django.views.generic import DetailView
+
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView
 
 from board import models, tables
 
@@ -24,7 +26,6 @@ class DepartmentListView(SingleTableView):
 
 
 
-# 追加
 # Department 詳細 (R)
 class DepartmentDetailView(DetailView):
     model = models.Department
@@ -32,3 +33,15 @@ class DepartmentDetailView(DetailView):
     template_name = "board/department_detail.html"
     
     context_object_name = "department"
+
+
+
+# Department 作成 (C)
+class DepartmentCreateView(CreateView):
+    model = models.Department
+
+    fields = ["name", "uses_lot", "lot_g"]
+
+    template_name = "board/department_form.html"
+
+    success_url = reverse_lazy("department_list")
