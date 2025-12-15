@@ -199,9 +199,9 @@ class Order(models.Model):
         validators=[MinValueValidator(1)]
     )
 
-    due_at = models.DateTimeField()
+    due_at = models.DateTimeField(null=False, blank=False)
 
-    customer_name = models.CharField(max_length=200)
+    customer_name = models.CharField(max_length=200, null=False, blank=False)
 
 
 
@@ -228,6 +228,64 @@ class Order(models.Model):
 
         if self.customer_name is None or self.customer_name.strip() == "":
             errors["customer_name"] = "customer_name を空白にはできません。"
+
+
+
+        if errors:
+            raise ValidationError(errors)
+
+
+
+class Task(models.Model):
+    department = models.ForeignKey\
+    (
+        Department,
+        on_delete=models.PROTECT,
+        null=False,
+        blank=False,
+    )
+
+    item = models.ForeignKey\
+    (
+        Item,
+        on_delete=models.PROTECT,
+        null=False,
+        blank=False,
+    )
+
+    # 1 以上 を定義側でも明確化
+    quantity_units = models.PositiveIntegerField\
+    (
+        validators=[MinValueValidator(1)]
+    )
+
+    due_at = models.DateTimeField(null=False, blank=False)
+
+
+
+    def __str__(self) -> str:
+        return f"{self.department}: {self.item} x {self.quantity_units} @ {self.due_at}"
+
+
+
+    def clean(self):
+        super().clean()
+
+        errors = {}
+
+
+
+        if self.department_id is None:
+            errors["department"] = "department を空白にはできません。"
+
+        if self.item_id is None:
+            errors["item"] = "item を空白にはできません。"
+
+        if self.quantity_units is None or self.quantity_units <= 0:
+            errors["quantity_units"] = "quantity_units は 1 以上を指定してください。"
+
+        if self.due_at is None:
+            errors["due_at"] = "due_at を空白にはできません。"
 
 
 
