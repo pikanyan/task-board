@@ -1,8 +1,8 @@
 # backend/board/views.py
-from django_tables2 import SingleTableView
+from django.urls import reverse, reverse_lazy
 
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django_tables2 import SingleTableView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from board import models, tables
 
@@ -45,3 +45,20 @@ class DepartmentCreateView(CreateView):
     template_name = "board/department_form.html"
 
     success_url = reverse_lazy("department_list")
+
+
+
+# 追加
+# Department 更新 (U)
+class DepartmentUpdateView(UpdateView):
+    model = models.Department
+
+    fields = ["name", "uses_lot", "lot_g"]
+
+    # C と共通
+    template_name = "board/department_form.html"
+    
+
+
+    def get_success_url(self):
+        return reverse("department_detail", kwargs={"pk": self.object.pk})
