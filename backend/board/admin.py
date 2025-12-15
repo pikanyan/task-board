@@ -43,3 +43,18 @@ class ItemAdmin(admin.ModelAdmin):
     )
 
     list_display_links = ("name",)
+
+
+
+@admin.register(models.ItemComponent)
+class ItemComponentAdmin(admin.ModelAdmin):
+    list_display =\
+    (
+        "id",
+        "parent_item",
+        "child_item",
+        "child_units_per_parent_unit",
+    )
+
+    list_display_links = ("parent_item",)
+
