@@ -12,6 +12,7 @@ from board import models
     "model",
     [
         models.Department,
+        models.Item,
     ],
 )
 def test_admin_registers_board_models(model):
