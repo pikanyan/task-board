@@ -1,6 +1,8 @@
 # backend/board/models.py
 from django.db import models
+
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
 
 
 
@@ -42,6 +44,56 @@ class Department(models.Model):
         else:
             if self.lot_g != 0:
                 errors["lot_g"] = "uses_lot=False の場合、lot_g は 0 にしてください。"
+
+
+
+        if errors:
+            raise ValidationError(errors)
+
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
+    # 1 単位が何 g か
+    # 0 は禁止
+    weight_per_unit_g = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+
+    default_department = models.ForeignKey\
+    (
+        "Department",
+        on_delete=models.PROTECT,
+        null=False,
+        blank=False,
+    )
+
+    is_department_output = models.BooleanField(null=False, blank=False)
+
+
+
+    def __str__(self) -> str:
+        return self.name
+
+
+
+    def clean(self):
+        super().clean()
+
+        errors = {}
+
+
+
+        if self.name is None or self.name.strip() == "":
+            errors["name"] = "name を空白にはできません。"
+
+        if self.weight_per_unit_g is None or self.weight_per_unit_g <= 0:
+            errors["weight_per_unit_g"] = "weight_per_unit_g は 1 以上を指定してください。"
+
+        if self.default_department_id is None:
+            errors["default_department"] = "default_department を空白にはできません。"
+
+        if self.is_department_output is None:
+            errors["is_department_output"] = "is_department_output を空白にはできません。"
 
 
 
