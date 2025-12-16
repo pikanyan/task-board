@@ -52,15 +52,15 @@ python manage.py shell
 ```
 from datetime import datetime, timezone
 
-from board.services import derive_tasks_v1_for_due_at
+from board.services import derive_tasks_v2_for_due_at
 
 
 
 # fixtures の Order(due_at) に合わせる
 due_at = datetime(2025, 12, 20, 5, 0, tzinfo=timezone.utc)
 
-# Order + ItemComponent から Task を再生成する (v1)
-derive_tasks_v1_for_due_at(due_at)
+# Order + ItemComponent から Task を再生成する (v2)
+derive_tasks_v2_for_due_at(due_at)
 ```
 
 ```
