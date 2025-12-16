@@ -1,0 +1,22 @@
+[
+    {
+        "model": "board.order",
+        "pk": 1,
+        "fields": {
+            "product_item": 1,
+            "quantity_units": 3,
+            "due_at": "2025-12-20T05:00:00Z",
+            "customer_name": "トライアル 天理店"
+        }
+    },
+    {
+        "model": "board.order",
+        "pk": 2,
+        "fields": {
+            "product_item": 1,
+            "quantity_units": 2,
+            "due_at": "2025-12-20T05:00:00Z",
+            "customer_name": "オークワ 田原本店"
+        }
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "model": "board.department",
+        "pk": 1,
+        "fields":
+        {
+            "name": "入荷班",
+            "uses_lot": true,
+            "lot_g": 1000
+        }
+    },
+    
+    {
+        "model": "board.department",
+        "pk": 2,
+        "fields":
+        {
+            "name": "いも班",
+            "uses_lot": true,
+            "lot_g": 1000
+        }
+    },
+
+    {
+        "model": "board.department",
+        "pk": 3,
+        "fields":
+        {
+            "name": "大葉班",
+            "uses_lot": true,
+            "lot_g": 1000
+        }
+    },
+
+    {
+        "model": "board.department",
+        "pk": 4,
+        "fields":
+        {
+            "name": "梱包班",
+            "uses_lot": false,
+            "lot_g": 0
+        }
+    },
+
+    {
+        "model": "board.department",
+        "pk": 5,
+        "fields":
+        {
+            "name": "ライン班",
+            "uses_lot": false,
+            "lot_g": 0
+        }
+    }
+]

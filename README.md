@@ -32,6 +32,41 @@ Task の優先順位付けや人員配置の判断など、
 現場で感じた課題を形にするつもりで TaskBoard を制作しました。
 ```
 
+## 使用法
+
+### 1. デモデータ投入 (fixtures)
+
+```
+python manage.py loaddata board/fixtures/departments.json
+python manage.py loaddata board/fixtures/items.json
+python manage.py loaddata board/fixtures/item_components.json
+python manage.py loaddata board/fixtures/orders.json
+```
+
+### 2. Task 自動生成
+
+```
+python manage.py shell
+```
+
+```
+from datetime import datetime, timezone
+
+from board.services import derive_tasks_v1_for_due_at
+
+
+
+# fixtures の Order(due_at) に合わせる
+due_at = datetime(2025, 12, 20, 5, 0, tzinfo=timezone.utc)
+
+# Order + ItemComponent から Task を再生成する (v1)
+derive_tasks_v1_for_due_at(due_at)
+```
+
+```
+exit()
+```
+
 ## 課題として意識した点
 
 -   タイミーとして班を移動した際、
