@@ -1,0 +1,76 @@
+[
+    {
+        "model": "board.itemcomponent",
+        "pk": 1,
+        "fields": {
+            "parent_item": 1,
+            "child_item": 2,
+            "child_units_per_parent_unit": 1
+        }
+    },
+    {
+        "model": "board.itemcomponent",
+        "pk": 2,
+        "fields": {
+            "parent_item": 1,
+            "child_item": 3,
+            "child_units_per_parent_unit": 2
+        }
+    },
+    {
+        "model": "board.itemcomponent",
+        "pk": 3,
+        "fields": {
+            "parent_item": 1,
+            "child_item": 4,
+            "child_units_per_parent_unit": 2
+        }
+    },
+
+    {
+        "model": "board.itemcomponent",
+        "pk": 4,
+        "fields": {
+            "parent_item": 2,
+            "child_item": 5,
+            "child_units_per_parent_unit": 1
+        }
+    },
+    {
+        "model": "board.itemcomponent",
+        "pk": 5,
+        "fields": {
+            "parent_item": 2,
+            "child_item": 6,
+            "child_units_per_parent_unit": 1
+        }
+    },
+    {
+        "model": "board.itemcomponent",
+        "pk": 6,
+        "fields": {
+            "parent_item": 2,
+            "child_item": 7,
+            "child_units_per_parent_unit": 1
+        }
+    },
+    {
+        "model": "board.itemcomponent",
+        "pk": 7,
+        "fields": {
+            "parent_item": 2,
+            "child_item": 8,
+            "child_units_per_parent_unit": 1
+        }
+    },
+
+    {
+        "model": "board.itemcomponent",
+        "pk": 8,
+        "fields": {
+            "parent_item": 5,
+            "child_item": 9,
+            "child_units_per_parent_unit": 1
+        }
+    }
+]

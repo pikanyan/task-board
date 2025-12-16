@@ -1,0 +1,156 @@
+[
+    {
+        "model": "board.item",
+        "pk": 1,
+        "fields": {
+            "name": "ポテトサラダセット 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 5,
+            "is_department_output": true
+        }
+    },
+
+    {
+        "model": "board.item",
+        "pk": 2,
+        "fields": {
+            "name": "ポテトサラダベース 800 g",
+            "weight_per_unit_g": 800,
+            "default_department": 4,
+            "is_department_output": true
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 3,
+        "fields": {
+            "name": "レタス (カット) 50 g",
+            "weight_per_unit_g": 50,
+            "default_department": 4,
+            "is_department_output": true
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 4,
+        "fields": {
+            "name": "赤玉ねぎ (スライス) 50 g",
+            "weight_per_unit_g": 50,
+            "default_department": 4,
+            "is_department_output": true
+        }
+    },
+
+    {
+        "model": "board.item",
+        "pk": 5,
+        "fields": {
+            "name": "じゃがいも (マッシュ) 550 g",
+            "weight_per_unit_g": 550,
+            "default_department": 4,
+            "is_department_output": false
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 6,
+        "fields": {
+            "name": "人参 (いちょう切り) 80 g",
+            "weight_per_unit_g": 80,
+            "default_department": 4,
+            "is_department_output": false
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 7,
+        "fields": {
+            "name": "きゅうり (小口切り) 70 g",
+            "weight_per_unit_g": 70,
+            "default_department": 4,
+            "is_department_output": false
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 8,
+        "fields": {
+            "name": "ハム (短冊切り) 100 g",
+            "weight_per_unit_g": 100,
+            "default_department": 4,
+            "is_department_output": false
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 9,
+        "fields": {
+            "name": "じゃがいも (乱切り) 550 g",
+            "weight_per_unit_g": 550,
+            "default_department": 4,
+            "is_department_output": false
+        }
+    },
+
+    {
+        "model": "board.item",
+        "pk": 10,
+        "fields": {
+            "name": "レタス (カット) 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 3,
+            "is_department_output": true
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 11,
+        "fields": {
+            "name": "赤玉ねぎ (スライス) 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 3,
+            "is_department_output": true
+        }
+    },
+
+    {
+        "model": "board.item",
+        "pk": 12,
+        "fields": {
+            "name": "じゃがいも (乱切り) 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 2,
+            "is_department_output": true
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 13,
+        "fields": {
+            "name": "人参 (いちょう切り) 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 3,
+            "is_department_output": true
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 14,
+        "fields": {
+            "name": "きゅうり (小口切り) 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 3,
+            "is_department_output": true
+        }
+    },
+    {
+        "model": "board.item",
+        "pk": 15,
+        "fields": {
+            "name": "ハム (短冊切り) 1 kg",
+            "weight_per_unit_g": 1000,
+            "default_department": 1,
+            "is_department_output": true
+        }
+    }
+]
